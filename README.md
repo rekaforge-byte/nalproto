@@ -28,9 +28,15 @@ Salin `.env.example` kepada `.env` dan isikan:
 cp .env.example .env
 ```
 
-- `DATABASE_URL` — connection string PostgreSQL anda
+- `DATABASE_URL` — connection string PostgreSQL anda (dibaca oleh `prisma.config.ts` dan oleh
+  `src/lib/prisma.ts` semasa runtime)
 - `AUTH_SECRET` — jana dengan `openssl rand -base64 32`
 - `NEXT_PUBLIC_SITE_URL` — URL laman (guna `http://localhost:3000` untuk local)
+
+> Projek ini menggunakan **Prisma ORM v7**, yang memindahkan connection URL daripada
+> `schema.prisma` ke fail `prisma.config.ts` di root projek, dan menggunakan *driver adapter*
+> (`@prisma/adapter-pg`) untuk sambungan PostgreSQL. Ini sudah dikonfigurasikan — anda hanya
+> perlu isi `DATABASE_URL` dalam `.env`.
 
 Jana Prisma Client, buat jadual dalam database, dan masukkan data contoh:
 
