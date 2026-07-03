@@ -24,11 +24,7 @@ const services = [
     title: "Prototype Fabrication",
     desc: "From concept to a functional model ready for testing.",
   },
-  {
-    code: "04",
-    title: "Technical Repair",
-    desc: "Diagnostics and repair for circuits, hardware, and IoT devices.",
-  },
+
 ];
 
 export default async function HomePage() {
