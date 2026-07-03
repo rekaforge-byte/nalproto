@@ -4,6 +4,7 @@ import Image from "next/image";
 const links = [
   { href: "/", label: "Home" },
   { href: "/produk", label: "Products" },
+  { href: "/quote", label: "Get a Quote" },
   { href: "/kad-perniagaan", label: "Business Card" },
   { href: "/hubungi", label: "Contact" },
 ];
@@ -39,7 +40,7 @@ export default function NavBar({ companyName = "NAL PROTO" }: { companyName?: st
         </nav>
 
         <Link
-          href="/hubungi"
+          href="/quote"
           className="hidden rounded-sm bg-amber px-4 py-2 font-mono text-xs font-medium uppercase tracking-widest-plus text-navy-950 transition-colors hover:bg-amber-strong md:inline-block"
         >
           Get a Quote
@@ -68,7 +69,7 @@ function MobileNav({ companyName }: { companyName: string }) {
           </Link>
         ))}
         <Link
-          href="/hubungi"
+          href="/quote"
           className="mt-1 rounded-sm bg-amber px-3 py-2 text-center font-mono text-xs font-medium uppercase tracking-widest-plus text-navy-950"
         >
           Get a Quote — {companyName}

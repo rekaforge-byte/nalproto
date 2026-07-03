@@ -8,25 +8,6 @@ import { getSettings } from "@/lib/get-settings";
 
 export const dynamic = "force-dynamic";
 
-const services = [
-  {
-    code: "01",
-    title: "3D Printing",
-    desc: "Custom prototypes and parts, from STL file to object in your hands.",
-  },
-  {
-    code: "02",
-    title: "Product Design",
-    desc: "CAD, technical sketches, and design reviews before fabrication.",
-  },
-  {
-    code: "03",
-    title: "Prototype Fabrication",
-    desc: "From concept to a functional model ready for testing.",
-  },
-
-];
-
 export default async function HomePage() {
   const settings = await getSettings();
 
@@ -42,6 +23,16 @@ export default async function HomePage() {
     featured = await prisma.product.findMany(featuredArgs);
   } catch {
     featured = [];
+  }
+
+  let services: Awaited<ReturnType<typeof prisma.service.findMany>> = [];
+  try {
+    services = await prisma.service.findMany({
+      where: { isActive: true },
+      orderBy: { position: "asc" },
+    });
+  } catch {
+    services = [];
   }
 
   return (
@@ -69,10 +60,10 @@ export default async function HomePage() {
                   View Products
                 </Link>
                 <Link
-                  href="/kad-perniagaan"
+                  href="/quote"
                   className="rounded-sm border border-line px-5 py-3 font-mono text-xs font-medium uppercase tracking-widest-plus text-paper hover:border-amber hover:text-amber"
                 >
-                  Digital Business Card
+                  Get a Print Quote
                 </Link>
               </div>
             </div>
@@ -94,28 +85,32 @@ export default async function HomePage() {
         </section>
 
         {/* SERVICES */}
-        <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
-          <p className="font-mono text-xs uppercase tracking-widest-plus text-amber">
-            What We Do
-          </p>
-          <h2 className="mt-2 max-w-xl font-display text-3xl font-semibold text-navy-950 md:text-4xl">
-            Our core services
-          </h2>
+        {services.length > 0 && (
+          <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+            <p className="font-mono text-xs uppercase tracking-widest-plus text-amber">
+              What We Do
+            </p>
+            <h2 className="mt-2 max-w-xl font-display text-3xl font-semibold text-navy-950 md:text-4xl">
+              Our core services
+            </h2>
 
-          <div className="mt-10 grid gap-px overflow-hidden rounded-md border border-navy-800/10 bg-navy-800/10 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((s) => (
-              <div key={s.code} className="flex flex-col gap-3 bg-paper p-6">
-                <span className="font-mono text-xs text-amber-strong">{s.code}</span>
-                <h3 className="font-display text-lg font-semibold text-navy-950">
-                  {s.title}
-                </h3>
-                <p className="font-sans text-sm leading-relaxed text-navy-900/70">
-                  {s.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+            <div className="mt-10 grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-px overflow-hidden rounded-md border border-navy-800/10 bg-navy-800/10">
+              {services.map((s, i) => (
+                <div key={s.id} className="flex flex-col gap-3 bg-paper p-6">
+                  <span className="font-mono text-xs text-amber-strong">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-display text-lg font-semibold text-navy-950">
+                    {s.title}
+                  </h3>
+                  <p className="font-sans text-sm leading-relaxed text-navy-900/70">
+                    {s.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* FEATURED PRODUCTS */}
         {featured.length > 0 && (

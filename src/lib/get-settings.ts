@@ -15,6 +15,8 @@ export const defaultSettings = {
   facebook: "",
   tiktok: "",
   logoUrl: "/logo.png",
+  quoteMarkupMultiplier: 3.0,
+  quoteMinPrice: 5.0,
   updatedAt: new Date(),
 };
 

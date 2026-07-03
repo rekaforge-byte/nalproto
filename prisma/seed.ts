@@ -37,9 +37,51 @@ async function main() {
       instagram: "https://instagram.com/nalproto",
       facebook: "",
       tiktok: "",
+      quoteMarkupMultiplier: 3.0,
+      quoteMinPrice: 5.0,
     },
     update: {},
   });
+
+  const defaultServices = [
+    {
+      title: "3D Printing",
+      description: "Custom prototypes and parts, from STL file to object in your hands.",
+      position: 1,
+    },
+    {
+      title: "Product Design",
+      description: "CAD, technical sketches, and design reviews before fabrication.",
+      position: 2,
+    },
+    {
+      title: "Prototype Fabrication",
+      description: "From concept to a functional model ready for testing.",
+      position: 3,
+    },
+    {
+      title: "Technical Repair",
+      description: "Diagnostics and repair for circuits, hardware, and IoT devices.",
+      position: 4,
+    },
+  ];
+
+  for (const s of defaultServices) {
+    const exists = await prisma.service.findFirst({ where: { title: s.title } });
+    if (!exists) await prisma.service.create({ data: s });
+  }
+
+  const defaultMaterials = [
+    { name: "PLA", densityGCm3: 1.24, costPerGram: 0.08, position: 1 },
+    { name: "PETG", densityGCm3: 1.27, costPerGram: 0.09, position: 2 },
+    { name: "ABS", densityGCm3: 1.04, costPerGram: 0.08, position: 3 },
+    { name: "TPU (Flexible)", densityGCm3: 1.21, costPerGram: 0.12, position: 4 },
+  ];
+
+  for (const m of defaultMaterials) {
+    const exists = await prisma.material.findFirst({ where: { name: m.name } });
+    if (!exists) await prisma.material.create({ data: m });
+  }
 
   const sampleProducts = [
     {

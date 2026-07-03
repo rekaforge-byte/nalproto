@@ -18,6 +18,8 @@ type SettingsFormProps = {
     instagram: string;
     facebook: string;
     tiktok: string;
+    quoteMarkupMultiplier: string;
+    quoteMinPrice: string;
   };
 };
 
@@ -62,6 +64,42 @@ export default function SettingsForm({ settings }: SettingsFormProps) {
       <Field label="Address">
         <input name="address" defaultValue={settings.address} className="input" />
       </Field>
+
+      <div className="grid grid-cols-2 gap-4 rounded-md border border-navy-800/10 bg-navy-800/5 p-4">
+        <div className="col-span-2">
+          <p className="font-mono text-xs uppercase tracking-widest-plus text-amber-strong">
+            Quote Calculator Pricing
+          </p>
+          <p className="mt-1 font-sans text-xs text-navy-900/50">
+            Final price = estimated weight × material cost/gram × markup. Set each
+            material&apos;s cost/gram under &ldquo;Print Materials&rdquo;.
+          </p>
+        </div>
+        <Field label="Markup multiplier (e.g. 3 = 3x cost)">
+          <input
+            name="quoteMarkupMultiplier"
+            type="number"
+            step="0.1"
+            min="1"
+            required
+            defaultValue={settings.quoteMarkupMultiplier}
+            className="input"
+            placeholder="3"
+          />
+        </Field>
+        <Field label="Minimum quote price (RM)">
+          <input
+            name="quoteMinPrice"
+            type="number"
+            step="0.5"
+            min="0"
+            required
+            defaultValue={settings.quoteMinPrice}
+            className="input"
+            placeholder="5"
+          />
+        </Field>
+      </div>
 
       <div className="grid grid-cols-3 gap-4">
         <Field label="Instagram">

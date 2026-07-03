@@ -15,7 +15,8 @@ export default async function AdminSettingsPage() {
         Company Settings
       </h1>
       <p className="mt-2 max-w-xl font-sans text-sm text-navy-900/60">
-        This information is displayed on the homepage, digital business card, and contact page.
+        This information is displayed on the homepage, digital business card, contact
+        page, and quote calculator.
       </p>
 
       <SettingsForm
@@ -31,6 +32,8 @@ export default async function AdminSettingsPage() {
           instagram: settings.instagram,
           facebook: settings.facebook,
           tiktok: settings.tiktok,
+          quoteMarkupMultiplier: settings.quoteMarkupMultiplier.toString(),
+          quoteMinPrice: settings.quoteMinPrice.toString(),
         }}
       />
     </div>

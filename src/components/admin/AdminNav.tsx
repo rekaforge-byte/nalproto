@@ -6,6 +6,8 @@ import { signOutAction } from "@/lib/actions/auth";
 
 const links = [
   { href: "/admin/produk", label: "Products" },
+  { href: "/admin/perkhidmatan", label: "Services" },
+  { href: "/admin/bahan", label: "Print Materials" },
   { href: "/admin/tetapan", label: "Company Settings" },
   { href: "/admin/pengguna", label: "Admin Users" },
 ];
