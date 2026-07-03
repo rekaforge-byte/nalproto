@@ -34,14 +34,16 @@ const services = [
 export default async function HomePage() {
   const settings = await getSettings();
 
-  let featured: Awaited<ReturnType<typeof prisma.product.findMany>> = [];
+  const featuredArgs = {
+    where: { isActive: true, isFeatured: true },
+    include: { images: { orderBy: { position: "asc" as const }, take: 1 } },
+    orderBy: { createdAt: "desc" as const },
+    take: 3,
+  };
+
+  let featured: Awaited<ReturnType<typeof prisma.product.findMany<typeof featuredArgs>>> = [];
   try {
-    featured = await prisma.product.findMany({
-      where: { isActive: true, isFeatured: true },
-      include: { images: { orderBy: { position: "asc" }, take: 1 } },
-      orderBy: { createdAt: "desc" },
-      take: 3,
-    });
+    featured = await prisma.product.findMany(featuredArgs);
   } catch {
     featured = [];
   }

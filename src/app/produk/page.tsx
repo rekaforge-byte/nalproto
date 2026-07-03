@@ -17,18 +17,20 @@ export default async function ProductsPage({
   const settings = await getSettings();
   const { kategori } = await searchParams;
 
-  let products: Awaited<ReturnType<typeof prisma.product.findMany>> = [];
+  const productsArgs = {
+    where: {
+      isActive: true,
+      ...(kategori ? { category: kategori } : {}),
+    },
+    include: { images: { orderBy: { position: "asc" as const }, take: 1 } },
+    orderBy: [{ isFeatured: "desc" as const }, { createdAt: "desc" as const }],
+  };
+
+  let products: Awaited<ReturnType<typeof prisma.product.findMany<typeof productsArgs>>> = [];
   let categories: string[] = [];
 
   try {
-    products = await prisma.product.findMany({
-      where: {
-        isActive: true,
-        ...(kategori ? { category: kategori } : {}),
-      },
-      include: { images: { orderBy: { position: "asc" }, take: 1 } },
-      orderBy: [{ isFeatured: "desc" }, { createdAt: "desc" }],
-    });
+    products = await prisma.product.findMany(productsArgs);
     const all = await prisma.product.findMany({
       where: { isActive: true },
       select: { category: true },
