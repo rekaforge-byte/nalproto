@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Product {
+  id          String         @id @default(cuid())
+  name        String
+  slug        String         @unique
+  sku         String?
+  category    String         @default("Umum")
+  description String         @db.Text
+  price       Decimal        @db.Decimal(10, 2)
+  currency    String         @default("MYR")
+  stock       Int?
+  isFeatured  Boolean        @default(false)
+  isActive    Boolean        @default(true)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  images      ProductImage[]
+
+  @@index([category])
+  @@index([isActive, isFeatured])
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  data      String   @db.Text
+  mimeType  String
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([productId])
+}
+
+model Settings {
+  id          Int      @id @default(1)
+  companyName String   @default("NAL PROTO")
+  tagline     String   @default("Prototaip. Fabrikasi. Selesai.")
+  aboutText   String   @db.Text @default("")
+  phone       String   @default("")
+  whatsapp    String   @default("")
+  email       String   @default("")
+  address     String   @default("")
+  mapUrl      String   @default("")
+  instagram   String   @default("")
+  facebook    String   @default("")
+  tiktok      String   @default("")
+  logoUrl     String   @default("/logo.png")
+  updatedAt   DateTime @updatedAt
+}
