@@ -9,7 +9,7 @@ import { slugify } from "@/lib/utils";
 async function requireAdmin() {
   const session = await auth();
   if (!session?.user) {
-    throw new Error("Tidak dibenarkan. Sila log masuk semula.");
+    throw new Error("Not authorized. Please log in again.");
   }
   return session;
 }
@@ -43,8 +43,8 @@ export async function createProduct(
   const isFeatured = formData.get("isFeatured") === "on";
   const isActive = formData.get("isActive") !== "off";
 
-  if (!name) return { error: "Nama produk diperlukan." };
-  if (isNaN(price) || price < 0) return { error: "Harga tidak sah." };
+  if (!name) return { error: "Product name is required." };
+  if (isNaN(price) || price < 0) return { error: "Invalid price." };
 
   let slug = slugify(name);
   const existing = await prisma.product.findUnique({ where: { slug } });
@@ -57,7 +57,7 @@ export async function createProduct(
 
   for (const img of validImages) {
     if (img.size > MAX_IMAGE_BYTES) {
-      return { error: `Gambar "${img.name}" terlalu besar. Had 3MB setiap gambar.` };
+      return { error: `Image "${img.name}" is too large. Max 3MB per image.` };
     }
   }
 
@@ -106,14 +106,14 @@ export async function updateProduct(
   const isFeatured = formData.get("isFeatured") === "on";
   const isActive = formData.get("isActive") !== "off";
 
-  if (!name) return { error: "Nama produk diperlukan." };
-  if (isNaN(price) || price < 0) return { error: "Harga tidak sah." };
+  if (!name) return { error: "Product name is required." };
+  if (isNaN(price) || price < 0) return { error: "Invalid price." };
 
   const images = formData.getAll("images") as File[];
   const validImages = images.filter((f) => f instanceof File && f.size > 0);
   for (const img of validImages) {
     if (img.size > MAX_IMAGE_BYTES) {
-      return { error: `Gambar "${img.name}" terlalu besar. Had 3MB setiap gambar.` };
+      return { error: `Image "${img.name}" is too large. Max 3MB per image.` };
     }
   }
 

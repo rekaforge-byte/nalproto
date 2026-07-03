@@ -17,28 +17,28 @@ export default function NewAdminForm() {
     <form ref={formRef} action={formAction} className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-end">
       <label className="flex flex-1 flex-col gap-1.5">
         <span className="font-mono text-[11px] uppercase tracking-widest-plus text-navy-900/50">
-          Nama
+          Name
         </span>
-        <input name="name" required className="input" placeholder="Nama admin" />
+        <input name="name" required className="input" placeholder="Admin name" />
       </label>
       <label className="flex flex-1 flex-col gap-1.5">
         <span className="font-mono text-[11px] uppercase tracking-widest-plus text-navy-900/50">
-          Emel
+          Email
         </span>
         <input name="email" type="email" required className="input" placeholder="admin@nalproto.com" />
       </label>
       <label className="flex flex-1 flex-col gap-1.5">
         <span className="font-mono text-[11px] uppercase tracking-widest-plus text-navy-900/50">
-          Kata Laluan
+          Password
         </span>
-        <input name="password" type="password" required minLength={8} className="input" placeholder="Min. 8 aksara" />
+        <input name="password" type="password" required minLength={8} className="input" placeholder="Min. 8 characters" />
       </label>
       <button
         type="submit"
         disabled={pending}
         className="h-fit rounded-sm bg-navy-950 px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-widest-plus text-paper hover:bg-navy-900 disabled:opacity-60"
       >
-        {pending ? "Menambah…" : "Tambah Admin"}
+        {pending ? "Adding…" : "Add Admin"}
       </button>
 
       {state.error && (
@@ -48,7 +48,7 @@ export default function NewAdminForm() {
       )}
       {state.success && (
         <p className="w-full rounded-sm border border-emerald-300 bg-emerald-50 px-3 py-2 font-mono text-xs text-emerald-700">
-          Admin baharu berjaya ditambah.
+          New admin added successfully.
         </p>
       )}
 

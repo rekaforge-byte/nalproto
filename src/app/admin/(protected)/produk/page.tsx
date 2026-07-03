@@ -16,24 +16,24 @@ export default async function AdminProductsPage() {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <p className="font-mono text-xs uppercase tracking-widest-plus text-amber-strong">
-            Pengurusan Katalog
+            Catalog Management
           </p>
           <h1 className="mt-1 font-display text-2xl font-semibold text-navy-950">
-            Produk ({products.length})
+            Products ({products.length})
           </h1>
         </div>
         <Link
           href="/admin/produk/baharu"
           className="rounded-sm bg-navy-950 px-4 py-2.5 font-mono text-xs font-medium uppercase tracking-widest-plus text-paper hover:bg-navy-900"
         >
-          + Tambah Produk
+          + Add Product
         </Link>
       </div>
 
       {products.length === 0 ? (
         <div className="mt-8 rounded-md border border-dashed border-navy-800/20 p-12 text-center">
           <p className="font-mono text-sm text-navy-900/60">
-            Belum ada produk. Klik &ldquo;Tambah Produk&rdquo; untuk mula.
+            No products yet. Click &ldquo;Add Product&rdquo; to get started.
           </p>
         </div>
       ) : (
@@ -41,12 +41,12 @@ export default async function AdminProductsPage() {
           <table className="w-full min-w-[720px] border-collapse text-left">
             <thead>
               <tr className="border-b border-navy-800/10 bg-navy-800/5 font-mono text-[11px] uppercase tracking-widest-plus text-navy-900/60">
-                <th className="px-4 py-3">Produk</th>
-                <th className="px-4 py-3">Kategori</th>
-                <th className="px-4 py-3">Harga</th>
-                <th className="px-4 py-3">Stok</th>
+                <th className="px-4 py-3">Product</th>
+                <th className="px-4 py-3">Category</th>
+                <th className="px-4 py-3">Price</th>
+                <th className="px-4 py-3">Stock</th>
                 <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3 text-right">Tindakan</th>
+                <th className="px-4 py-3 text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -66,7 +66,7 @@ export default async function AdminProductsPage() {
                     <span className="font-medium text-navy-950">{p.name}</span>
                     {p.isFeatured && (
                       <span className="rounded-sm bg-amber/20 px-1.5 py-0.5 font-mono text-[10px] uppercase text-amber-strong">
-                        Pilihan
+                        Featured
                       </span>
                     )}
                   </td>
@@ -87,7 +87,7 @@ export default async function AdminProductsPage() {
                           : "bg-navy-800/10 text-navy-900/50"
                       }`}
                     >
-                      {p.isActive ? "Aktif" : "Disembunyikan"}
+                      {p.isActive ? "Active" : "Hidden"}
                     </span>
                   </td>
                   <td className="px-4 py-3 text-right">

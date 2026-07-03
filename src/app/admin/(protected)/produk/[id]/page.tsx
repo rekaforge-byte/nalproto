@@ -23,7 +23,7 @@ export default async function EditProductPage({
   return (
     <div>
       <p className="font-mono text-xs uppercase tracking-widest-plus text-amber-strong">
-        Sunting Produk
+        Edit Product
       </p>
       <h1 className="mt-1 font-display text-2xl font-semibold text-navy-950">
         {product.name}
@@ -31,7 +31,7 @@ export default async function EditProductPage({
 
       <ProductForm
         action={updateWithId}
-        submitLabel="Kemaskini Produk"
+        submitLabel="Update Product"
         initial={{
           name: product.name,
           category: product.category,

@@ -21,9 +21,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NAL PROTO | Prototaip & Fabrikasi",
+  title: "NAL PROTO | Prototyping & Fabrication",
   description:
-    "NAL PROTO — perkhidmatan reka bentuk, cetakan 3D dan fabrikasi prototaip di Malaysia. Lihat produk kami, hubungi kami, atau simpan kad perniagaan digital kami.",
+    "NAL PROTO — design, 3D printing, and prototype fabrication services in Malaysia. Browse our products, get in touch, or save our digital business card.",
   icons: {
     icon: "/logo.png",
   },
@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="ms"
+      lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-navy-950">

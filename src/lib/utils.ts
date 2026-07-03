@@ -13,7 +13,7 @@ export function formatPrice(
   currency: string = "MYR"
 ): string {
   const value = typeof price === "string" ? parseFloat(price) : price;
-  return new Intl.NumberFormat("ms-MY", {
+  return new Intl.NumberFormat("en-MY", {
     style: "currency",
     currency,
     minimumFractionDigits: 2,
@@ -22,7 +22,7 @@ export function formatPrice(
 
 export function formatDate(date: Date | string): string {
   const d = typeof date === "string" ? new Date(date) : date;
-  return new Intl.DateTimeFormat("ms-MY", {
+  return new Intl.DateTimeFormat("en-MY", {
     day: "numeric",
     month: "long",
     year: "numeric",

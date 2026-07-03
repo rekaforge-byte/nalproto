@@ -3,9 +3,9 @@ import { prisma } from "@/lib/prisma";
 export const defaultSettings = {
   id: 1,
   companyName: "NAL PROTO",
-  tagline: "Prototaip. Fabrikasi. Selesai.",
+  tagline: "From Concept to Creation",
   aboutText:
-    "NAL PROTO menyediakan perkhidmatan reka bentuk dan fabrikasi prototaip — dari cetakan 3D, pemasangan litar, hingga kerja pembaikan teknikal.",
+    "NAL PROTO provides design and prototype fabrication services — from 3D printing and circuit assembly to technical repair work.",
   phone: "",
   whatsapp: "",
   email: "",

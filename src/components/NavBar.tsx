@@ -2,10 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const links = [
-  { href: "/", label: "Utama" },
-  { href: "/produk", label: "Produk" },
-  { href: "/kad-perniagaan", label: "Kad Perniagaan" },
-  { href: "/hubungi", label: "Hubungi" },
+  { href: "/", label: "Home" },
+  { href: "/produk", label: "Products" },
+  { href: "/kad-perniagaan", label: "Business Card" },
+  { href: "/hubungi", label: "Contact" },
 ];
 
 export default function NavBar({ companyName = "NAL PROTO" }: { companyName?: string }) {
@@ -15,7 +15,7 @@ export default function NavBar({ companyName = "NAL PROTO" }: { companyName?: st
         <Link href="/" className="flex items-center gap-3 group">
           <Image
             src="/logo.png"
-            alt={`Logo ${companyName}`}
+            alt={`${companyName} logo`}
             width={40}
             height={40}
             className="rounded-md"
@@ -42,7 +42,7 @@ export default function NavBar({ companyName = "NAL PROTO" }: { companyName?: st
           href="/hubungi"
           className="hidden rounded-sm bg-amber px-4 py-2 font-mono text-xs font-medium uppercase tracking-widest-plus text-navy-950 transition-colors hover:bg-amber-strong md:inline-block"
         >
-          Dapatkan Sebut Harga
+          Get a Quote
         </Link>
 
         <MobileNav companyName={companyName} />
@@ -71,7 +71,7 @@ function MobileNav({ companyName }: { companyName: string }) {
           href="/hubungi"
           className="mt-1 rounded-sm bg-amber px-3 py-2 text-center font-mono text-xs font-medium uppercase tracking-widest-plus text-navy-950"
         >
-          Dapatkan Sebut Harga — {companyName}
+          Get a Quote — {companyName}
         </Link>
       </div>
     </details>

@@ -26,13 +26,13 @@ export default function SettingsForm({ settings }: SettingsFormProps) {
 
   return (
     <form action={formAction} className="mt-8 flex max-w-2xl flex-col gap-6">
-      <Field label="Nama Syarikat">
+      <Field label="Company Name">
         <input name="companyName" required defaultValue={settings.companyName} className="input" />
       </Field>
       <Field label="Tagline">
         <input name="tagline" defaultValue={settings.tagline} className="input" />
       </Field>
-      <Field label="Tentang Kami">
+      <Field label="About Us">
         <textarea
           name="aboutText"
           rows={4}
@@ -42,24 +42,24 @@ export default function SettingsForm({ settings }: SettingsFormProps) {
       </Field>
 
       <div className="grid grid-cols-2 gap-4">
-        <Field label="Telefon">
+        <Field label="Phone">
           <input name="phone" defaultValue={settings.phone} className="input" placeholder="+60 12-345 6789" />
         </Field>
-        <Field label="WhatsApp (nombor sahaja, cth 60123456789)">
+        <Field label="WhatsApp (numbers only, e.g. 60123456789)">
           <input name="whatsapp" defaultValue={settings.whatsapp} className="input" placeholder="60123456789" />
         </Field>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <Field label="Emel">
+        <Field label="Email">
           <input name="email" type="email" defaultValue={settings.email} className="input" />
         </Field>
-        <Field label="Pautan Google Maps (pilihan)">
+        <Field label="Google Maps Link (optional)">
           <input name="mapUrl" defaultValue={settings.mapUrl} className="input" placeholder="https://maps.google.com/..." />
         </Field>
       </div>
 
-      <Field label="Alamat">
+      <Field label="Address">
         <input name="address" defaultValue={settings.address} className="input" />
       </Field>
 
@@ -82,7 +82,7 @@ export default function SettingsForm({ settings }: SettingsFormProps) {
       )}
       {state.success && (
         <p className="rounded-sm border border-emerald-300 bg-emerald-50 px-3 py-2 font-mono text-xs text-emerald-700">
-          Tetapan berjaya dikemaskini.
+          Settings updated successfully.
         </p>
       )}
 
@@ -91,7 +91,7 @@ export default function SettingsForm({ settings }: SettingsFormProps) {
         disabled={pending}
         className="w-fit rounded-sm bg-amber px-6 py-3 font-mono text-xs font-medium uppercase tracking-widest-plus text-navy-950 hover:bg-amber-strong disabled:opacity-60"
       >
-        {pending ? "Menyimpan…" : "Simpan Tetapan"}
+        {pending ? "Saving…" : "Save Settings"}
       </button>
 
       <style jsx>{`

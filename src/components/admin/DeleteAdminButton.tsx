@@ -17,19 +17,19 @@ export default function DeleteAdminButton({
       type="button"
       disabled={disabled || pending}
       onClick={() => {
-        if (confirm("Padam akaun admin ini?")) {
+        if (confirm("Delete this admin account?")) {
           startTransition(async () => {
             try {
               await deleteAdmin(adminId);
             } catch (err) {
-              alert(err instanceof Error ? err.message : "Gagal memadam.");
+              alert(err instanceof Error ? err.message : "Failed to delete.");
             }
           });
         }
       }}
       className="font-mono text-xs uppercase tracking-widest-plus text-red-600/80 hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-40"
     >
-      Padam
+      Delete
     </button>
   );
 }

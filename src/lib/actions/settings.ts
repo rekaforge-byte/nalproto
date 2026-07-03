@@ -14,10 +14,10 @@ export async function updateSettings(
   formData: FormData
 ): Promise<SettingsFormState> {
   const session = await auth();
-  if (!session?.user) return { error: "Tidak dibenarkan." };
+  if (!session?.user) return { error: "Not authorized." };
 
   const companyName = String(formData.get("companyName") || "").trim();
-  if (!companyName) return { error: "Nama syarikat diperlukan." };
+  if (!companyName) return { error: "Company name is required." };
 
   await prisma.settings.upsert({
     where: { id: 1 },

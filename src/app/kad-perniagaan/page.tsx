@@ -14,9 +14,9 @@ export default async function BusinessCardPage() {
   )}`;
 
   const contactRows = [
-    { label: "Telefon", value: settings.phone },
-    { label: "Emel", value: settings.email },
-    { label: "Alamat", value: settings.address },
+    { label: "Phone", value: settings.phone },
+    { label: "Email", value: settings.email },
+    { label: "Address", value: settings.address },
   ].filter((r) => r.value);
 
   return (
@@ -26,13 +26,13 @@ export default async function BusinessCardPage() {
         <section className="blueprint-grid border-b border-line bg-navy-950">
           <div className="mx-auto max-w-6xl px-5 py-14 text-center md:px-8 md:py-20">
             <p className="font-mono text-xs uppercase tracking-widest-plus text-amber">
-              Kad Perniagaan Digital
+              Digital Business Card
             </p>
             <h1 className="mt-2 font-display text-3xl font-semibold text-paper md:text-5xl">
-              Simpan kenalan kami
+              Save our contact
             </h1>
             <p className="mx-auto mt-3 max-w-lg font-sans text-sm text-paper-dim md:text-base">
-              Imbas kod QR atau muat turun kad ini terus ke telefon anda.
+              Scan the QR code or download this card straight to your phone.
             </p>
           </div>
         </section>
@@ -68,7 +68,7 @@ export default async function BusinessCardPage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={qrSrc}
-                alt="Kod QR kad perniagaan"
+                alt="Business card QR code"
                 width={180}
                 height={180}
                 className="rounded-md bg-paper p-2"
@@ -77,7 +77,7 @@ export default async function BusinessCardPage() {
                 href="/api/vcard"
                 className="w-full rounded-sm bg-amber px-5 py-3 text-center font-mono text-xs font-medium uppercase tracking-widest-plus text-navy-950 hover:bg-amber-strong"
               >
-                Muat Turun Kenalan (.vcf)
+                Download Contact (.vcf)
               </a>
               {settings.whatsapp && (
                 <a
@@ -86,7 +86,7 @@ export default async function BusinessCardPage() {
                   rel="noopener noreferrer"
                   className="w-full rounded-sm border border-line px-5 py-3 text-center font-mono text-xs font-medium uppercase tracking-widest-plus text-paper hover:border-amber hover:text-amber"
                 >
-                  WhatsApp Kami
+                  WhatsApp Us
                 </a>
               )}
             </div>

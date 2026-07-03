@@ -11,23 +11,23 @@ export const dynamic = "force-dynamic";
 const services = [
   {
     code: "01",
-    title: "Cetakan 3D",
-    desc: "Prototaip dan part custom, dari fail STL ke objek dalam tangan anda.",
+    title: "3D Printing",
+    desc: "Custom prototypes and parts, from STL file to object in your hands.",
   },
   {
     code: "02",
-    title: "Reka Bentuk Produk",
-    desc: "CAD, lakaran teknikal, dan semakan reka bentuk sebelum fabrikasi.",
+    title: "Product Design",
+    desc: "CAD, technical sketches, and design reviews before fabrication.",
   },
   {
     code: "03",
-    title: "Fabrikasi Prototaip",
-    desc: "Dari konsep ke model fungsional yang sedia untuk diuji.",
+    title: "Prototype Fabrication",
+    desc: "From concept to a functional model ready for testing.",
   },
   {
     code: "04",
-    title: "Pembaikan Teknikal",
-    desc: "Diagnostik dan pembaikan litar, hardware, dan peranti IoT.",
+    title: "Technical Repair",
+    desc: "Diagnostics and repair for circuits, hardware, and IoT devices.",
   },
 ];
 
@@ -57,10 +57,10 @@ export default async function HomePage() {
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-[1.1fr_0.9fr] md:px-8 md:py-24">
             <div>
               <p className="font-mono text-xs uppercase tracking-widest-plus text-amber">
-                {settings.address || "Malaysia"} · Studio Fabrikasi &amp; Prototaip
+                {settings.address || "Malaysia"} · Fabrication &amp; Prototyping Studio
               </p>
               <h1 className="mt-4 font-display text-4xl font-semibold leading-[1.08] text-paper md:text-6xl">
-                {settings.tagline || "Prototaip. Fabrikasi. Selesai."}
+                {settings.tagline || "From Concept to Creation"}
               </h1>
               <p className="mt-5 max-w-md font-sans text-base leading-relaxed text-paper-dim">
                 {settings.aboutText}
@@ -70,13 +70,13 @@ export default async function HomePage() {
                   href="/produk"
                   className="rounded-sm bg-amber px-5 py-3 font-mono text-xs font-medium uppercase tracking-widest-plus text-navy-950 hover:bg-amber-strong"
                 >
-                  Lihat Produk
+                  View Products
                 </Link>
                 <Link
                   href="/kad-perniagaan"
                   className="rounded-sm border border-line px-5 py-3 font-mono text-xs font-medium uppercase tracking-widest-plus text-paper hover:border-amber hover:text-amber"
                 >
-                  Kad Perniagaan Digital
+                  Digital Business Card
                 </Link>
               </div>
             </div>
@@ -100,10 +100,10 @@ export default async function HomePage() {
         {/* SERVICES */}
         <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <p className="font-mono text-xs uppercase tracking-widest-plus text-amber">
-            Apa Kami Buat
+            What We Do
           </p>
           <h2 className="mt-2 max-w-xl font-display text-3xl font-semibold text-navy-950 md:text-4xl">
-            Servis teras kami
+            Our core services
           </h2>
 
           <div className="mt-10 grid gap-px overflow-hidden rounded-md border border-navy-800/10 bg-navy-800/10 sm:grid-cols-2 lg:grid-cols-4">
@@ -128,17 +128,17 @@ export default async function HomePage() {
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <div>
                   <p className="font-mono text-xs uppercase tracking-widest-plus text-amber">
-                    Katalog
+                    Catalog
                   </p>
                   <h2 className="mt-2 font-display text-3xl font-semibold text-paper md:text-4xl">
-                    Produk pilihan
+                    Featured products
                   </h2>
                 </div>
                 <Link
                   href="/produk"
                   className="font-mono text-xs uppercase tracking-widest-plus text-paper-dim hover:text-amber"
                 >
-                  Lihat semua produk →
+                  View all products →
                 </Link>
               </div>
 
@@ -170,17 +170,17 @@ export default async function HomePage() {
           <div className="reg-corners flex flex-col items-start gap-6 rounded-md border border-navy-800/15 bg-navy-800/5 p-8 text-navy-950 md:flex-row md:items-center md:justify-between md:p-12">
             <div>
               <p className="font-mono text-xs uppercase tracking-widest-plus text-amber-strong">
-                Ada idea untuk direalisasikan?
+                Have an idea you want to bring to life?
               </p>
               <h2 className="mt-2 font-display text-2xl font-semibold md:text-3xl">
-                Mari bincang keperluan prototaip anda.
+                Let&apos;s talk about your prototype needs.
               </h2>
             </div>
             <Link
               href="/hubungi"
               className="rounded-sm bg-navy-950 px-6 py-3 font-mono text-xs font-medium uppercase tracking-widest-plus text-paper hover:bg-navy-900"
             >
-              Hubungi Kami
+              Contact Us
             </Link>
           </div>
         </section>

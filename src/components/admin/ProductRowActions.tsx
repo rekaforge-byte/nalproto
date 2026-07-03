@@ -30,13 +30,13 @@ export default function ProductRowActions({
         }
         className="text-navy-900/70 hover:text-amber-strong disabled:opacity-50"
       >
-        {isActive ? "Sembunyi" : "Aktifkan"}
+        {isActive ? "Hide" : "Activate"}
       </button>
       <button
         type="button"
         disabled={pending}
         onClick={() => {
-          if (confirm("Padam produk ini? Tindakan ini tidak boleh dibatalkan.")) {
+          if (confirm("Delete this product? This action cannot be undone.")) {
             startTransition(async () => {
               await deleteProduct(productId);
             });
@@ -44,7 +44,7 @@ export default function ProductRowActions({
         }}
         className="text-red-600/80 hover:text-red-600 disabled:opacity-50"
       >
-        Padam
+        Delete
       </button>
     </div>
   );

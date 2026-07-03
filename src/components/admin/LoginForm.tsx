@@ -14,7 +14,7 @@ export default function LoginForm({ callbackUrl }: { callbackUrl: string }) {
 
       <div>
         <label className="font-mono text-[11px] uppercase tracking-widest-plus text-paper-dim">
-          Emel
+          Email
         </label>
         <input
           type="email"
@@ -28,7 +28,7 @@ export default function LoginForm({ callbackUrl }: { callbackUrl: string }) {
 
       <div>
         <label className="font-mono text-[11px] uppercase tracking-widest-plus text-paper-dim">
-          Kata Laluan
+          Password
         </label>
         <input
           type="password"
@@ -51,7 +51,7 @@ export default function LoginForm({ callbackUrl }: { callbackUrl: string }) {
         disabled={pending}
         className="mt-2 rounded-sm bg-amber px-4 py-3 font-mono text-xs font-medium uppercase tracking-widest-plus text-navy-950 transition-colors hover:bg-amber-strong disabled:opacity-60"
       >
-        {pending ? "Sedang log masuk…" : "Log Masuk"}
+        {pending ? "Logging in…" : "Log In"}
       </button>
     </form>
   );

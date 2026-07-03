@@ -33,12 +33,12 @@ export default function Footer({
           <div>
             <p className="font-display text-xl font-semibold">{companyName}</p>
             <p className="mt-2 max-w-xs font-sans text-sm text-paper-dim">
-              Reka bentuk, cetakan 3D dan fabrikasi prototaip — dari idea ke objek sebenar.
+              Design, 3D printing, and prototype fabrication — from idea to real object.
             </p>
           </div>
 
           <div className="font-mono text-sm text-paper-dim">
-            <p className="mb-3 text-xs uppercase tracking-widest-plus text-amber">Hubungi</p>
+            <p className="mb-3 text-xs uppercase tracking-widest-plus text-amber">Contact</p>
             <ul className="space-y-1.5">
               {phone && <li>{phone}</li>}
               {email && <li>{email}</li>}
@@ -47,16 +47,16 @@ export default function Footer({
           </div>
 
           <div className="font-mono text-sm text-paper-dim">
-            <p className="mb-3 text-xs uppercase tracking-widest-plus text-amber">Pautan</p>
+            <p className="mb-3 text-xs uppercase tracking-widest-plus text-amber">Links</p>
             <ul className="space-y-1.5">
               <li>
                 <Link href="/produk" className="hover:text-amber">
-                  Produk &amp; Servis
+                  Products &amp; Services
                 </Link>
               </li>
               <li>
                 <Link href="/kad-perniagaan" className="hover:text-amber">
-                  Kad Perniagaan Digital
+                  Digital Business Card
                 </Link>
               </li>
               {socials.map((s) => (
@@ -76,8 +76,8 @@ export default function Footer({
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-line-soft pt-6 font-mono text-xs text-paper-dim/70 md:flex-row md:items-center md:justify-between">
-          <span>© {year} {companyName}. Hak cipta terpelihara.</span>
-          <span>Dibina dengan Next.js</span>
+          <span>© {year} {companyName}. All rights reserved.</span>
+          <span>Built with Next.js</span>
         </div>
       </div>
     </footer>

@@ -26,7 +26,7 @@ export default async function ProductDetailPage({
   if (!product || !product.isActive) notFound();
 
   const whatsappMsg = encodeURIComponent(
-    `Hai ${settings.companyName}, saya berminat dengan produk "${product.name}".`
+    `Hi ${settings.companyName}, I'm interested in the product "${product.name}".`
   );
   const whatsappHref = settings.whatsapp
     ? `https://wa.me/${settings.whatsapp}?text=${whatsappMsg}`
@@ -41,7 +41,7 @@ export default async function ProductDetailPage({
             href="/produk"
             className="font-mono text-xs uppercase tracking-widest-plus text-navy-900/50 hover:text-amber-strong"
           >
-            ← Kembali ke Produk
+            ← Back to Products
           </Link>
 
           <div className="mt-6 grid gap-10 md:grid-cols-2">
@@ -55,7 +55,7 @@ export default async function ProductDetailPage({
                 />
               ) : (
                 <div className="flex aspect-square w-full items-center justify-center font-mono text-sm text-paper-dim">
-                  Tiada Gambar
+                  No Image
                 </div>
               )}
               {product.images.length > 1 && (
@@ -91,7 +91,7 @@ export default async function ProductDetailPage({
 
               {product.stock !== null && (
                 <p className="mt-4 font-mono text-xs uppercase tracking-widest-plus text-navy-900/50">
-                  Stok: {product.stock > 0 ? `${product.stock} unit` : "Tiada stok"}
+                  Stock: {product.stock > 0 ? `${product.stock} unit${product.stock === 1 ? "" : "s"}` : "Out of stock"}
                 </p>
               )}
 
@@ -103,14 +103,14 @@ export default async function ProductDetailPage({
                     rel="noopener noreferrer"
                     className="rounded-sm bg-amber px-5 py-3 font-mono text-xs font-medium uppercase tracking-widest-plus text-navy-950 hover:bg-amber-strong"
                   >
-                    Tanya via WhatsApp
+                    Ask via WhatsApp
                   </a>
                 )}
                 <Link
                   href="/hubungi"
                   className="rounded-sm border border-navy-800/20 px-5 py-3 font-mono text-xs font-medium uppercase tracking-widest-plus text-navy-900 hover:border-amber hover:text-amber-strong"
                 >
-                  Hubungi Kami
+                  Contact Us
                 </Link>
               </div>
             </div>

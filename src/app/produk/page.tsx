@@ -49,13 +49,13 @@ export default async function ProductsPage({
         <section className="blueprint-grid border-b border-line bg-navy-950">
           <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
             <p className="font-mono text-xs uppercase tracking-widest-plus text-amber">
-              Katalog
+              Catalog
             </p>
             <h1 className="mt-2 font-display text-3xl font-semibold text-paper md:text-5xl">
-              Produk &amp; Servis Kami
+              Our Products &amp; Services
             </h1>
             <p className="mt-3 max-w-xl font-sans text-sm text-paper-dim md:text-base">
-              Senarai produk dan perkhidmatan yang tersedia dari {settings.companyName}.
+              A list of products and services available from {settings.companyName}.
             </p>
           </div>
         </section>
@@ -71,7 +71,7 @@ export default async function ProductsPage({
                     : "border-navy-800/20 text-navy-900/70 hover:border-amber hover:text-amber-strong"
                 }`}
               >
-                Semua
+                All
               </Link>
               {categories.map((c) => (
                 <Link
@@ -92,7 +92,7 @@ export default async function ProductsPage({
           {products.length === 0 ? (
             <div className="rounded-md border border-dashed border-navy-800/20 p-12 text-center">
               <p className="font-mono text-sm text-navy-900/60">
-                Tiada produk untuk dipaparkan buat masa ini.
+                No products to display at this time.
               </p>
             </div>
           ) : (

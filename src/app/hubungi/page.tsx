@@ -9,18 +9,18 @@ export default async function ContactPage() {
 
   const whatsappHref = settings.whatsapp
     ? `https://wa.me/${settings.whatsapp}?text=${encodeURIComponent(
-        `Hai ${settings.companyName}, saya nak tanya tentang servis anda.`
+        `Hi ${settings.companyName}, I'd like to ask about your services.`
       )}`
     : null;
 
   const channels = [
     {
-      label: "Telefon",
+      label: "Phone",
       value: settings.phone,
       href: settings.phone ? `tel:${settings.phone.replace(/\s+/g, "")}` : null,
     },
     {
-      label: "Emel",
+      label: "Email",
       value: settings.email,
       href: settings.email ? `mailto:${settings.email}` : null,
     },
@@ -30,7 +30,7 @@ export default async function ContactPage() {
       href: whatsappHref,
     },
     {
-      label: "Alamat",
+      label: "Address",
       value: settings.address,
       href: settings.mapUrl || null,
     },
@@ -43,14 +43,14 @@ export default async function ContactPage() {
         <section className="blueprint-grid border-b border-line bg-navy-950">
           <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
             <p className="font-mono text-xs uppercase tracking-widest-plus text-amber">
-              Hubungi Kami
+              Contact Us
             </p>
             <h1 className="mt-2 font-display text-3xl font-semibold text-paper md:text-5xl">
-              Mari kita bina sesuatu bersama
+              Let&apos;s build something together
             </h1>
             <p className="mt-3 max-w-xl font-sans text-sm text-paper-dim md:text-base">
-              Ada projek, soalan tentang produk, atau nak minta sebut harga? Pilih cara
-              paling mudah untuk anda di bawah.
+              Have a project, a question about a product, or need a quote? Pick
+              whichever way works best for you below.
             </p>
           </div>
         </section>
@@ -71,11 +71,11 @@ export default async function ContactPage() {
                 {c.href && (
                   <a
                     href={c.href}
-                    target={c.label === "Alamat" || c.label === "WhatsApp" ? "_blank" : undefined}
+                    target={c.label === "Address" || c.label === "WhatsApp" ? "_blank" : undefined}
                     rel="noopener noreferrer"
                     className="font-mono text-xs uppercase tracking-widest-plus text-navy-900/60 hover:text-amber-strong"
                   >
-                    Buka →
+                    Open →
                   </a>
                 )}
               </div>
@@ -85,7 +85,7 @@ export default async function ContactPage() {
           {channels.length === 0 && (
             <div className="rounded-md border border-dashed border-navy-800/20 p-12 text-center">
               <p className="font-mono text-sm text-navy-900/60">
-                Maklumat hubungi belum ditetapkan. Sila kemas kini di panel admin.
+                Contact details haven&apos;t been set yet. Please update them in the admin panel.
               </p>
             </div>
           )}

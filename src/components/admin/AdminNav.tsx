@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { signOutAction } from "@/lib/actions/auth";
 
 const links = [
-  { href: "/admin/produk", label: "Produk" },
-  { href: "/admin/tetapan", label: "Tetapan Syarikat" },
-  { href: "/admin/pengguna", label: "Pengguna Admin" },
+  { href: "/admin/produk", label: "Products" },
+  { href: "/admin/tetapan", label: "Company Settings" },
+  { href: "/admin/pengguna", label: "Admin Users" },
 ];
 
 export default function AdminNav({ userName }: { userName: string }) {
@@ -19,7 +19,7 @@ export default function AdminNav({ userName }: { userName: string }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/logo.png" alt="Logo" className="h-8 w-8 rounded-md" />
         <div>
-          <p className="font-display text-sm font-semibold">Panel Admin</p>
+          <p className="font-display text-sm font-semibold">Admin Panel</p>
           <p className="font-mono text-[10px] uppercase tracking-widest-plus text-paper-dim">
             NAL PROTO
           </p>
@@ -52,14 +52,14 @@ export default function AdminNav({ userName }: { userName: string }) {
             type="submit"
             className="mt-2 font-mono text-xs uppercase tracking-widest-plus text-amber hover:text-amber-strong"
           >
-            Log Keluar
+            Log Out
           </button>
         </form>
         <Link
           href="/"
           className="mt-2 block font-mono text-xs uppercase tracking-widest-plus text-paper-dim hover:text-paper"
         >
-          ← Kembali ke Laman Utama
+          ← Back to Home
         </Link>
       </div>
     </aside>

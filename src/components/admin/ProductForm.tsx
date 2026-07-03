@@ -45,43 +45,43 @@ export default function ProductForm({
 
   return (
     <form action={formAction} className="mt-8 flex max-w-2xl flex-col gap-6">
-      <Field label="Nama Produk">
+      <Field label="Product Name">
         <input
           name="name"
           required
           defaultValue={initial?.name}
           className="input"
-          placeholder="Cetakan 3D Custom (PLA)"
+          placeholder="Custom 3D Print (PLA)"
         />
       </Field>
 
       <div className="grid grid-cols-2 gap-4">
-        <Field label="Kategori">
+        <Field label="Category">
           <input
             name="category"
             defaultValue={initial?.category}
             className="input"
-            placeholder="Cetakan 3D"
+            placeholder="3D Printing"
           />
         </Field>
-        <Field label="SKU (pilihan)">
+        <Field label="SKU (optional)">
           <input name="sku" defaultValue={initial?.sku} className="input" placeholder="P3D-001" />
         </Field>
       </div>
 
-      <Field label="Penerangan">
+      <Field label="Description">
         <textarea
           name="description"
           required
           rows={5}
           defaultValue={initial?.description}
           className="input resize-y"
-          placeholder="Terangkan produk atau servis ini..."
+          placeholder="Describe this product or service..."
         />
       </Field>
 
       <div className="grid grid-cols-2 gap-4">
-        <Field label="Harga (RM)">
+        <Field label="Price (RM)">
           <input
             name="price"
             type="number"
@@ -93,7 +93,7 @@ export default function ProductForm({
             placeholder="25.00"
           />
         </Field>
-        <Field label="Stok (kosongkan jika servis)">
+        <Field label="Stock (leave blank for services)">
           <input
             name="stock"
             type="number"
@@ -113,7 +113,7 @@ export default function ProductForm({
             defaultChecked={initial?.isFeatured}
             className="h-4 w-4 accent-amber-strong"
           />
-          Produk Pilihan
+          Featured Product
         </label>
         <label className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest-plus text-navy-900/70">
           <input
@@ -122,14 +122,14 @@ export default function ProductForm({
             defaultChecked={initial ? initial.isActive : true}
             className="h-4 w-4 accent-amber-strong"
           />
-          Papar di Laman Web
+          Show on Website
         </label>
       </div>
 
       {existingImages && existingImages.length > 0 && (
         <div>
           <p className="mb-2 font-mono text-[11px] uppercase tracking-widest-plus text-navy-900/50">
-            Gambar Sedia Ada
+            Existing Images
           </p>
           <div className="flex flex-wrap gap-3">
             {existingImages.map((img) => (
@@ -143,7 +143,7 @@ export default function ProductForm({
                     onClick={() => startDeleteTransition(() => onDeleteImage(img.id))}
                     className="absolute inset-0 hidden items-center justify-center bg-red-900/70 font-mono text-[10px] uppercase text-white group-hover:flex"
                   >
-                    Padam
+                    Delete
                   </button>
                 )}
               </div>
@@ -152,7 +152,7 @@ export default function ProductForm({
         </div>
       )}
 
-      <Field label="Muat Naik Gambar Baharu (boleh pilih lebih dari satu, had 3MB setiap satu)">
+      <Field label="Upload New Images (you can select more than one, max 3MB each)">
         <input
           type="file"
           name="images"
@@ -188,7 +188,7 @@ export default function ProductForm({
         disabled={pending}
         className="w-fit rounded-sm bg-amber px-6 py-3 font-mono text-xs font-medium uppercase tracking-widest-plus text-navy-950 hover:bg-amber-strong disabled:opacity-60"
       >
-        {pending ? "Menyimpan…" : submitLabel}
+        {pending ? "Saving…" : submitLabel}
       </button>
 
       <style jsx>{`

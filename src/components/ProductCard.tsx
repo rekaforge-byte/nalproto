@@ -37,12 +37,12 @@ export default function ProductCard({
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center font-mono text-xs text-paper-dim">
-            Tiada Gambar
+            No Image
           </div>
         )}
         {isFeatured && (
           <span className="absolute left-2 top-2 rounded-sm bg-amber px-2 py-1 font-mono text-[10px] uppercase tracking-widest-plus text-navy-950">
-            Pilihan
+            Featured
           </span>
         )}
       </div>
@@ -60,7 +60,7 @@ export default function ProductCard({
             {formatPrice(price, currency)}
           </span>
           <span className="font-mono text-[10px] uppercase tracking-widest-plus text-paper-dim group-hover:text-amber">
-            Lihat →
+            View →
           </span>
         </div>
       </div>
