@@ -96,6 +96,7 @@ pada servis Railway.
 
 ```
 src/
+  proxy.ts                # Network boundary (Next.js 16 proxy — protects /admin routes)
   app/                    # Laman awam & panel admin (App Router)
     page.tsx              # Laman utama
     produk/                # Katalog & detail produk

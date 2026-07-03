@@ -1,19 +1,31 @@
 import type { Metadata } from "next";
-import "@fontsource/space-grotesk/500.css";
-import "@fontsource/space-grotesk/700.css";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/ibm-plex-mono/400.css";
-import "@fontsource/ibm-plex-mono/500.css";
+import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
 export const metadata: Metadata = {
-  title: "NAL PROTO — Fabrikasi & Prototaip Pantas",
+  title: "NAL PROTO | Prototaip & Fabrikasi",
   description:
-    "NAL PROTO menyediakan servis fabrikasi custom, prototaip pantas dan cetakan 3D profesional. Lihat produk kami dan hubungi terus untuk sebut harga.",
+    "NAL PROTO — perkhidmatan reka bentuk, cetakan 3D dan fabrikasi prototaip di Malaysia. Lihat produk kami, hubungi kami, atau simpan kad perniagaan digital kami.",
   icons: {
-    icon: "/images/logo.png",
+    icon: "/logo.png",
   },
 };
 
@@ -23,11 +35,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ms" className="h-full antialiased">
-      <body
-        className="min-h-full flex flex-col bg-paper text-navy-950"
-        style={{ fontFamily: "var(--font-sans)" }}
-      >
+    <html
+      lang="ms"
+      className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col bg-paper text-navy-950">
         {children}
       </body>
     </html>
