@@ -79,7 +79,7 @@ export default async function HomePage() {
                 unoptimized={settings.logoUrl.startsWith("data:")}
               />
               <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-sm bg-navy-950 px-3 py-1 font-mono text-[10px] uppercase tracking-widest-plus text-paper-dim">
-                {settings.companyName} — Rev. 01
+                {settings.companyName}
               </span>
             </div>
           </div>
