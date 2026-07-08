@@ -37,7 +37,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <NavBar companyName={settings.companyName} />
+      <NavBar companyName={settings.companyName} logoUrl={settings.logoUrl} />
       <main className="flex-1">
         {/* HERO */}
         <section className="blueprint-grid relative overflow-hidden border-b border-line bg-navy-950">
@@ -70,12 +70,13 @@ export default async function HomePage() {
 
             <div className="reg-corners relative mx-auto flex aspect-square w-full max-w-sm items-center justify-center rounded-md border border-line bg-navy-900/60 p-8 text-amber">
               <Image
-                src="/logo.png"
+                src={settings.logoUrl}
                 alt={settings.companyName}
                 width={340}
                 height={340}
                 className="h-full w-full object-contain"
                 priority
+                unoptimized={settings.logoUrl.startsWith("data:")}
               />
               <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-sm bg-navy-950 px-3 py-1 font-mono text-[10px] uppercase tracking-widest-plus text-paper-dim">
                 {settings.companyName} — Rev. 01

@@ -12,14 +12,20 @@ const links = [
   { href: "/admin/pengguna", label: "Admin Users" },
 ];
 
-export default function AdminNav({ userName }: { userName: string }) {
+export default function AdminNav({
+  userName,
+  logoUrl = "/logo.png",
+}: {
+  userName: string;
+  logoUrl?: string;
+}) {
   const pathname = usePathname();
 
   return (
     <aside className="w-full shrink-0 border-b border-line bg-navy-950 text-paper md:h-screen md:w-64 md:border-b-0 md:border-r">
       <div className="flex items-center gap-3 border-b border-line-soft px-5 py-4">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo.png" alt="Logo" className="h-8 w-8 rounded-md" />
+        <img src={logoUrl} alt="Logo" className="h-8 w-8 rounded-md object-contain" />
         <div>
           <p className="font-display text-sm font-semibold">Admin Panel</p>
           <p className="font-mono text-[10px] uppercase tracking-widest-plus text-paper-dim">

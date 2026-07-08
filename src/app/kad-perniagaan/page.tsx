@@ -21,7 +21,7 @@ export default async function BusinessCardPage() {
 
   return (
     <>
-      <NavBar companyName={settings.companyName} />
+      <NavBar companyName={settings.companyName} logoUrl={settings.logoUrl} />
       <main className="flex-1">
         <section className="blueprint-grid border-b border-line bg-navy-950">
           <div className="mx-auto max-w-6xl px-5 py-14 text-center md:px-8 md:py-20">
@@ -41,11 +41,12 @@ export default async function BusinessCardPage() {
           <div className="reg-corners w-full rounded-lg border border-navy-800/15 bg-navy-900 p-8 text-amber shadow-xl">
             <div className="flex flex-col items-center text-center">
               <Image
-                src="/logo.png"
+                src={settings.logoUrl}
                 alt={settings.companyName}
                 width={88}
                 height={88}
                 className="rounded-md"
+                unoptimized={settings.logoUrl.startsWith("data:")}
               />
               <h2 className="mt-4 font-display text-2xl font-semibold text-paper">
                 {settings.companyName}

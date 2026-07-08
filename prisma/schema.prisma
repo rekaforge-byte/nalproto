@@ -60,7 +60,7 @@ model Settings {
   instagram   String   @default("")
   facebook    String   @default("")
   tiktok      String   @default("")
-  logoUrl     String   @default("/logo.png")
+  logoUrl     String   @db.Text @default("/logo.png")
   quoteMarkupMultiplier Decimal  @db.Decimal(6, 2) @default(3.0)
   quoteMinPrice         Decimal  @db.Decimal(10, 2) @default(5.0)
   updatedAt   DateTime @updatedAt

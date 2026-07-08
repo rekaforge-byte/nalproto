@@ -1,4 +1,5 @@
 import LoginForm from "@/components/admin/LoginForm";
+import { getSettings } from "@/lib/get-settings";
 
 export default async function AdminLoginPage({
   searchParams,
@@ -6,13 +7,18 @@ export default async function AdminLoginPage({
   searchParams: Promise<{ callbackUrl?: string }>;
 }) {
   const { callbackUrl } = await searchParams;
+  const settings = await getSettings();
 
   return (
     <div className="blueprint-grid flex min-h-screen items-center justify-center bg-navy-950 px-5">
       <div className="reg-corners w-full max-w-sm rounded-lg border border-line bg-navy-900 p-8 text-amber">
         <div className="flex flex-col items-center text-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="NAL PROTO" className="h-14 w-14 rounded-md" />
+          <img
+            src={settings.logoUrl}
+            alt={settings.companyName}
+            className="h-14 w-14 rounded-md object-contain"
+          />
           <h1 className="mt-4 font-display text-xl font-semibold text-paper">
             Admin Login
           </h1>

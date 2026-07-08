@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useActionState } from "react";
 import { updateSettings, type SettingsFormState } from "@/lib/actions/settings";
 
@@ -20,14 +21,43 @@ type SettingsFormProps = {
     tiktok: string;
     quoteMarkupMultiplier: string;
     quoteMinPrice: string;
+    logoUrl: string;
   };
 };
 
 export default function SettingsForm({ settings }: SettingsFormProps) {
   const [state, formAction, pending] = useActionState(updateSettings, initialState);
+  const [logoPreview, setLogoPreview] = useState<string | null>(null);
+
+  function handleLogoChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) {
+      setLogoPreview(null);
+      return;
+    }
+    setLogoPreview(URL.createObjectURL(file));
+  }
 
   return (
     <form action={formAction} className="mt-8 flex max-w-2xl flex-col gap-6">
+      <Field label="Company Logo (PNG, JPEG, WEBP, or SVG, max 2MB)">
+        <div className="flex items-center gap-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={logoPreview || settings.logoUrl}
+            alt="Current logo"
+            className="h-16 w-16 rounded-md border border-navy-800/15 object-contain bg-white p-1"
+          />
+          <input
+            type="file"
+            name="logo"
+            accept="image/png,image/jpeg,image/webp,image/svg+xml,image/x-icon"
+            onChange={handleLogoChange}
+            className="input file:mr-4 file:rounded-sm file:border-0 file:bg-navy-950 file:px-3 file:py-2 file:font-mono file:text-xs file:uppercase file:text-paper"
+          />
+        </div>
+      </Field>
+
       <Field label="Company Name">
         <input name="companyName" required defaultValue={settings.companyName} className="input" />
       </Field>

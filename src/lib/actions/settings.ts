@@ -9,6 +9,9 @@ export type SettingsFormState = {
   success?: boolean;
 };
 
+const MAX_LOGO_BYTES = 2 * 1024 * 1024; // 2MB
+const ALLOWED_LOGO_TYPES = ["image/png", "image/jpeg", "image/webp", "image/svg+xml", "image/x-icon"];
+
 export async function updateSettings(
   _prevState: SettingsFormState,
   formData: FormData
@@ -24,6 +27,22 @@ export async function updateSettings(
   if (isNaN(markup) || markup <= 0) return { error: "Invalid markup multiplier." };
   if (isNaN(minPrice) || minPrice < 0) return { error: "Invalid minimum price." };
 
+  // Logo upload is optional — only replace the stored logo if a new file was selected.
+  let logoUrl: string | undefined;
+  const logoFile = formData.get("logo");
+  if (logoFile instanceof File && logoFile.size > 0) {
+    if (logoFile.size > MAX_LOGO_BYTES) {
+      return { error: "Logo image is too large. Max 2MB." };
+    }
+    if (logoFile.type && !ALLOWED_LOGO_TYPES.includes(logoFile.type)) {
+      return { error: "Logo must be a PNG, JPEG, WEBP, SVG, or ICO image." };
+    }
+    const bytes = await logoFile.arrayBuffer();
+    const base64 = Buffer.from(bytes).toString("base64");
+    const mimeType = logoFile.type || "image/png";
+    logoUrl = `data:${mimeType};base64,${base64}`;
+  }
+
   const shared = {
     companyName,
     tagline: String(formData.get("tagline") || ""),
@@ -38,6 +57,7 @@ export async function updateSettings(
     tiktok: String(formData.get("tiktok") || ""),
     quoteMarkupMultiplier: markup,
     quoteMinPrice: minPrice,
+    ...(logoUrl ? { logoUrl } : {}),
   };
 
   await prisma.settings.upsert({

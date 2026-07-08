@@ -34,6 +34,7 @@ export default async function AdminSettingsPage() {
           tiktok: settings.tiktok,
           quoteMarkupMultiplier: settings.quoteMarkupMultiplier.toString(),
           quoteMinPrice: settings.quoteMinPrice.toString(),
+          logoUrl: settings.logoUrl,
         }}
       />
     </div>

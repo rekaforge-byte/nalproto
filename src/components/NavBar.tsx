@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const links = [
   { href: "/", label: "Home" },
@@ -9,18 +8,24 @@ const links = [
   { href: "/hubungi", label: "Contact" },
 ];
 
-export default function NavBar({ companyName = "NAL PROTO" }: { companyName?: string }) {
+export default function NavBar({
+  companyName = "NAL PROTO",
+  logoUrl = "/logo.png",
+}: {
+  companyName?: string;
+  logoUrl?: string;
+}) {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-navy-950/95 backdrop-blur supports-[backdrop-filter]:bg-navy-950/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 md:px-8">
         <Link href="/" className="flex items-center gap-3 group">
-          <Image
-            src="/logo.png"
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={logoUrl}
             alt={`${companyName} logo`}
             width={40}
             height={40}
-            className="rounded-md"
-            priority
+            className="h-10 w-10 rounded-md object-contain"
           />
           <span className="font-display text-lg font-semibold tracking-tight text-paper">
             {companyName}

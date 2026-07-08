@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
+import { getSettings } from "@/lib/get-settings";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -20,14 +21,17 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600"],
 });
 
-export const metadata: Metadata = {
-  title: "NAL PROTO | Prototyping & Fabrication",
-  description:
-    "NAL PROTO — design, 3D printing, and prototype fabrication services in Malaysia. Browse our products, get in touch, or save our digital business card.",
-  icons: {
-    icon: "/logo.png",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSettings();
+  return {
+    title: `${settings.companyName} | Prototyping & Fabrication`,
+    description:
+      "NAL PROTO — design, 3D printing, and prototype fabrication services in Malaysia. Browse our products, get in touch, or save our digital business card.",
+    icons: {
+      icon: settings.logoUrl,
+    },
+  };
+}
 
 export default function RootLayout({
   children,

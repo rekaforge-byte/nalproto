@@ -38,7 +38,7 @@ export default async function ContactPage() {
 
   return (
     <>
-      <NavBar companyName={settings.companyName} />
+      <NavBar companyName={settings.companyName} logoUrl={settings.logoUrl} />
       <main className="flex-1">
         <section className="blueprint-grid border-b border-line bg-navy-950">
           <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
